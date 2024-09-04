@@ -1,0 +1,209 @@
+import {useState} from "react";
+import {FaGithub, FaLinkedin, FaTwitter} from 'react-icons/fa';
+import axios from 'axios';
+
+export default function Contact() {
+
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+    });
+
+    const [errors, setErrors] = useState({});
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // Validation simple
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.firstName) newErrors.firstName = 'Le prénom est obligatoire';
+        if (!formData.lastName) newErrors.lastName = 'Le nom est obligatoire';
+        if (!formData.email) newErrors.email = 'L\'email est obligatoire';
+        if (formData.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
+            newErrors.email = 'Email non valide';
+        }
+        if (!formData.subject) newErrors.subject = 'Le sujet est obligatoire';
+        if (!formData.message) newErrors.message = 'Le message est obligatoire';
+        return newErrors;
+    };
+
+    const sendEmail = async () => {
+        try {
+            const response = await axios.post(
+                'https://api.mailjet.com/v3.1/send',
+                {
+                    Messages: [
+                        {
+                            From: {
+                                Email: "enzoviguier34@gmail.com", // Ton email d'expéditeur
+                                Name: "Enzo VIGUIER",
+                            },
+                            To: [
+                                {
+                                    Email: "enzoviguier34@gmail.com", // Ton email de destinataire
+                                    Name: "Enzo VIGUIER",
+                                },
+                            ],
+                            TemplateID: parseInt(import.meta.env.VITE_MAILJET_TEMPLATE_ID), // L'ID du template MailJet
+                            TemplateLanguage: true,
+                            Variables: {
+                                nom: formData.nom,
+                                prenom: formData.prenom,
+                                email: formData.email,
+                                telephone: formData.telephone || 'Non fourni',
+                                sujet: formData.sujet,
+                                message: formData.message,
+                            },
+                        },
+                    ],
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Basic ${btoa(`${import.meta.env.VITE_MAILJET_API_KEY}:${import.meta.env.VITE_MAILJET_SECRET_API_KEY}`)}`, // Authentification
+                    },
+                }
+            );
+            console.log('Email envoyé avec succès', response);
+        } catch (error) {
+            console.error('Erreur lors de l\'envoi de l\'email', error);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length === 0) {
+            await sendEmail();
+            setIsSubmitted(true);
+        } else {
+            setErrors(validationErrors);
+        }
+    };
+
+
+    return (
+        <>
+            <section id="contact" className="py-16 bg-gray-100">
+                <div className="container mx-auto px-6 lg:px-8">
+                    <h2 className="text-3xl font-bold text-neutral-800 mb-8 text-center">Contactez-moi</h2>
+
+                    <div className="flex flex-col lg:flex-row justify-between items-center">
+                        {/* Informations de contact */}
+                        <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pr-10">
+                            <h3 className="text-xl font-semibold mb-4">Mes informations de contact</h3>
+                            <p className="text-neutral-800 mb-4">Vous pouvez me contacter via ce formulaire ou sur les
+                                réseaux sociaux ci-dessous :</p>
+
+                            {/* Liens des réseaux sociaux */}
+                            <div className="flex space-x-4 mb-8">
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                                   className="text-sky-600">
+                                    <FaGithub size={30}/>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                                   className="text-sky-600">
+                                    <FaLinkedin size={30}/>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                                   className="text-sky-600">
+                                    <FaTwitter size={30}/>
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Formulaire de contact */}
+                        <div className="lg:w-1/2 w-full">
+                            {isSubmitted ? (
+                                <p className="text-green-600">Merci pour votre message, je vous répondrai bientôt.</p>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                        <div>
+                                            <label htmlFor="firstName" className="block text-neutral-800">Prénom
+                                                *</label>
+                                            <input
+                                                type="text"
+                                                id="firstName"
+                                                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
+                                                value={formData.firstName}
+                                                onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                                            />
+                                            {errors.firstName && <p className="text-red-600">{errors.firstName}</p>}
+                                        </div>
+                                        <div>
+                                            <label htmlFor="lastName" className="block text-neutral-800">Nom *</label>
+                                            <input
+                                                type="text"
+                                                id="lastName"
+                                                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
+                                                value={formData.lastName}
+                                                onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                                            />
+                                            {errors.lastName && <p className="text-red-600">{errors.lastName}</p>}
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-4">
+                                        <label htmlFor="email" className="block text-neutral-800">Email *</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                        />
+                                        {errors.email && <p className="text-red-600">{errors.email}</p>}
+                                    </div>
+
+                                    <div className="mb-4">
+                                        <label htmlFor="phone" className="block text-neutral-800">Téléphone</label>
+                                        <input
+                                            type="text"
+                                            id="phone"
+                                            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
+                                            value={formData.phone}
+                                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                        />
+                                    </div>
+
+                                    <div className="mb-4">
+                                        <label htmlFor="subject" className="block text-neutral-800">Sujet *</label>
+                                        <input
+                                            type="text"
+                                            id="subject"
+                                            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
+                                            value={formData.subject}
+                                            onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                                        />
+                                        {errors.subject && <p className="text-red-600">{errors.subject}</p>}
+                                    </div>
+
+                                    <div className="mb-6">
+                                        <label htmlFor="message" className="block text-neutral-800">Message *</label>
+                                        <textarea
+                                            id="message"
+                                            rows="5"
+                                            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
+                                            value={formData.message}
+                                            onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                        ></textarea>
+                                        {errors.message && <p className="text-red-600">{errors.message}</p>}
+                                    </div>
+
+                                    <button type="submit"
+                                            className="bg-sky-600 text-white px-6 py-3 rounded-lg hover:bg-sky-700 transition">
+                                        Envoyer
+                                    </button>
+                                </form>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+};
