@@ -1,3 +1,5 @@
+import {FaDirections, FaExternalLinkAlt, FaLink} from "react-icons/fa";
+
 export default function ProjectCard({ title, description, technologies, imageUrl, moreInfoLink, repositoryLink }) {
     return (
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -13,9 +15,9 @@ export default function ProjectCard({ title, description, technologies, imageUrl
             </span>
                     ))}
                 </div>
-                <div className="flex justify-between">
-                    <a href={moreInfoLink} className="text-blue-800 font-semibold">More info</a>
-                    <a href={repositoryLink} className="text-sky-600 font-semibold">Repository</a>
+                <div className="flex justify-between items-center">
+                    <a href={moreInfoLink} className="bg-sky-600 hover:bg-sky-700 p-2 rounded text-white font-semibold">More info</a>
+                    <a href={repositoryLink} className="text-sky-600 font-semibold inline-flex items-center">Repository<FaExternalLinkAlt className="ml-1"/></a>
                 </div>
             </div>
         </div>

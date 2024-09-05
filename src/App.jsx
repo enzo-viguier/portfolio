@@ -7,7 +7,6 @@ import Contact from "./component/Contact.jsx";
 
 function App() {
 
-
     return (
         <>
             <Hero></Hero>
