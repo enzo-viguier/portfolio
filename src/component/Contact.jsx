@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {FaGithub, FaLinkedin, FaTwitter} from 'react-icons/fa';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function Contact() {
 
@@ -30,55 +30,27 @@ export default function Contact() {
         return newErrors;
     };
 
-    // const sendEmail = async () => {
-    //     try {
-    //         const response = await axios.post(
-    //             'https://api.mailjet.com/v3.1/send',
-    //             {
-    //                 Messages: [
-    //                     {
-    //                         From: {
-    //                             Email: "enzoviguier34@gmail.com", // Ton email d'expéditeur
-    //                             Name: "Enzo VIGUIER",
-    //                         },
-    //                         To: [
-    //                             {
-    //                                 Email: "enzoviguier34@gmail.com", // Ton email de destinataire
-    //                                 Name: "Enzo VIGUIER",
-    //                             },
-    //                         ],
-    //                         TemplateID: parseInt(import.meta.env.VITE_MAILJET_TEMPLATE_ID), // L'ID du template MailJet
-    //                         TemplateLanguage: true,
-    //                         Variables: {
-    //                             nom: formData.nom,
-    //                             prenom: formData.prenom,
-    //                             email: formData.email,
-    //                             telephone: formData.telephone || 'Non fourni',
-    //                             sujet: formData.sujet,
-    //                             message: formData.message,
-    //                         },
-    //                     },
-    //                 ],
-    //             },
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     Authorization: `Basic ${btoa(`${import.meta.env.VITE_MAILJET_API_KEY}:${import.meta.env.VITE_MAILJET_SECRET_API_KEY}`)}`, // Authentification
-    //                 },
-    //             }
-    //         );
-    //         console.log('Email envoyé avec succès', response);
-    //     } catch (error) {
-    //         console.error('Erreur lors de l\'envoi de l\'email', error);
-    //     }
-    // };
 
-    const sendEmail = async () => {
-        try {
-            const response = await axios.post('/api/sendEmail', { formData });
-            console.log('Email envoyé avec succès', response);
-        } catch (error) {
-            console.error('Erreur lors de l\'envoi de l\'email', error);
+    const sendEmail = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        formData.append("access_key", "5d9bdda9-7141-4025-8bd1-fbfc51aabee1");
+
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: json
+        }).then((res) => res.json());
+
+        if (res.success) {
+            console.log("Success", res);
         }
     };
 
@@ -86,7 +58,7 @@ export default function Contact() {
         e.preventDefault();
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
-            await sendEmail();
+            await sendEmail(e);
             setIsSubmitted(true);
         } else {
             setErrors(validationErrors);
@@ -137,6 +109,7 @@ export default function Contact() {
                                             <input
                                                 type="text"
                                                 id="firstName"
+                                                name="prenom"
                                                 className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
                                                 value={formData.firstName}
                                                 onChange={(e) => setFormData({...formData, firstName: e.target.value})}
@@ -148,6 +121,7 @@ export default function Contact() {
                                             <input
                                                 type="text"
                                                 id="lastName"
+                                                name="nom"
                                                 className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
                                                 value={formData.lastName}
                                                 onChange={(e) => setFormData({...formData, lastName: e.target.value})}
@@ -161,6 +135,7 @@ export default function Contact() {
                                         <input
                                             type="email"
                                             id="email"
+                                            name="mail"
                                             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
                                             value={formData.email}
                                             onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -173,6 +148,7 @@ export default function Contact() {
                                         <input
                                             type="text"
                                             id="phone"
+                                            name="telephone"
                                             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
                                             value={formData.phone}
                                             onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -184,6 +160,7 @@ export default function Contact() {
                                         <input
                                             type="text"
                                             id="subject"
+                                            name="sujet"
                                             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
                                             value={formData.subject}
                                             onChange={(e) => setFormData({...formData, subject: e.target.value})}
@@ -196,6 +173,7 @@ export default function Contact() {
                                         <textarea
                                             id="message"
                                             rows="5"
+                                            name="message"
                                             className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600"
                                             value={formData.message}
                                             onChange={(e) => setFormData({...formData, message: e.target.value})}
