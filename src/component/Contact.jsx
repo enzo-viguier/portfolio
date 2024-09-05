@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {FaGithub, FaLinkedin, FaTwitter} from 'react-icons/fa';
-// import axios from 'axios';
+import {FaGithub, FaLinkedin} from 'react-icons/fa';
+import {FaXTwitter} from "react-icons/fa6";
 
 export default function Contact() {
 
@@ -76,22 +76,24 @@ export default function Contact() {
                         {/* Informations de contact */}
                         <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pr-10">
                             <h3 className="text-xl font-semibold mb-4">Mes informations de contact</h3>
+                            <p className="text-neutral-800 mb-4">Mail : enzoviguier34@gmail.com</p>
                             <p className="text-neutral-800 mb-4">Vous pouvez me contacter via ce formulaire ou sur les
                                 réseaux sociaux ci-dessous :</p>
 
                             {/* Liens des réseaux sociaux */}
                             <div className="flex space-x-4 mb-8">
-                                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                                <a href="https://github.com/enzo-viguier" target="_blank" rel="noopener noreferrer"
                                    className="text-sky-600">
                                     <FaGithub size={30}/>
                                 </a>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                                <a href="https://www.linkedin.com/in/enzo-viguier-2833b61b7/" target="_blank" rel="noopener noreferrer"
                                    className="text-sky-600">
                                     <FaLinkedin size={30}/>
                                 </a>
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                                <a href="https://x.com/Enzo_Vigz" target="_blank" rel="noopener noreferrer"
                                    className="text-sky-600">
-                                    <FaTwitter size={30}/>
+                                    {/*<FaTwitter size={30}/>*/}
+                                    <FaXTwitter size={30}></FaXTwitter>
                                 </a>
                             </div>
                         </div>
@@ -101,7 +103,7 @@ export default function Contact() {
                             {isSubmitted ? (
                                 <p className="text-green-600">Merci pour votre message, je vous répondrai bientôt.</p>
                             ) : (
-                                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
+                                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md bg-slate-300">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                                         <div>
                                             <label htmlFor="firstName" className="block text-neutral-800">Prénom
