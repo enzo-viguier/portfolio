@@ -30,43 +30,52 @@ export default function Contact() {
         return newErrors;
     };
 
+    // const sendEmail = async () => {
+    //     try {
+    //         const response = await axios.post(
+    //             'https://api.mailjet.com/v3.1/send',
+    //             {
+    //                 Messages: [
+    //                     {
+    //                         From: {
+    //                             Email: "enzoviguier34@gmail.com", // Ton email d'expéditeur
+    //                             Name: "Enzo VIGUIER",
+    //                         },
+    //                         To: [
+    //                             {
+    //                                 Email: "enzoviguier34@gmail.com", // Ton email de destinataire
+    //                                 Name: "Enzo VIGUIER",
+    //                             },
+    //                         ],
+    //                         TemplateID: parseInt(import.meta.env.VITE_MAILJET_TEMPLATE_ID), // L'ID du template MailJet
+    //                         TemplateLanguage: true,
+    //                         Variables: {
+    //                             nom: formData.nom,
+    //                             prenom: formData.prenom,
+    //                             email: formData.email,
+    //                             telephone: formData.telephone || 'Non fourni',
+    //                             sujet: formData.sujet,
+    //                             message: formData.message,
+    //                         },
+    //                     },
+    //                 ],
+    //             },
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     Authorization: `Basic ${btoa(`${import.meta.env.VITE_MAILJET_API_KEY}:${import.meta.env.VITE_MAILJET_SECRET_API_KEY}`)}`, // Authentification
+    //                 },
+    //             }
+    //         );
+    //         console.log('Email envoyé avec succès', response);
+    //     } catch (error) {
+    //         console.error('Erreur lors de l\'envoi de l\'email', error);
+    //     }
+    // };
+
     const sendEmail = async () => {
         try {
-            const response = await axios.post(
-                'https://api.mailjet.com/v3.1/send',
-                {
-                    Messages: [
-                        {
-                            From: {
-                                Email: "enzoviguier34@gmail.com", // Ton email d'expéditeur
-                                Name: "Enzo VIGUIER",
-                            },
-                            To: [
-                                {
-                                    Email: "enzoviguier34@gmail.com", // Ton email de destinataire
-                                    Name: "Enzo VIGUIER",
-                                },
-                            ],
-                            TemplateID: parseInt(import.meta.env.VITE_MAILJET_TEMPLATE_ID), // L'ID du template MailJet
-                            TemplateLanguage: true,
-                            Variables: {
-                                nom: formData.nom,
-                                prenom: formData.prenom,
-                                email: formData.email,
-                                telephone: formData.telephone || 'Non fourni',
-                                sujet: formData.sujet,
-                                message: formData.message,
-                            },
-                        },
-                    ],
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Basic ${btoa(`${import.meta.env.VITE_MAILJET_API_KEY}:${import.meta.env.VITE_MAILJET_SECRET_API_KEY}`)}`, // Authentification
-                    },
-                }
-            );
+            const response = await axios.post('/api/sendEmail', { formData });
             console.log('Email envoyé avec succès', response);
         } catch (error) {
             console.error('Erreur lors de l\'envoi de l\'email', error);
