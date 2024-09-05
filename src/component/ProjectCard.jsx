@@ -1,4 +1,4 @@
-import {FaDirections, FaExternalLinkAlt, FaLink} from "react-icons/fa";
+import {FaExternalLinkAlt} from "react-icons/fa";
 
 export default function ProjectCard({ title, description, technologies, imageUrl, moreInfoLink, repositoryLink }) {
     return (
