@@ -17,7 +17,7 @@ export default function ProjectCard({ title, description, technologies, imageUrl
                 </div>
                 <div className="flex justify-between items-center">
                     <a href={moreInfoLink} className="bg-sky-600 hover:bg-sky-700 p-2 rounded text-white font-semibold">More info</a>
-                    <a href={repositoryLink} className="text-sky-600 font-semibold inline-flex items-center">Repository<FaExternalLinkAlt className="ml-1"/></a>
+                    <a href={repositoryLink} target="_blank" className="text-sky-600 font-semibold inline-flex items-center">Repository<FaExternalLinkAlt className="ml-1"/></a>
                 </div>
             </div>
         </div>
