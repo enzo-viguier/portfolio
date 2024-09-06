@@ -1,7 +1,8 @@
-import EmptyImage from "../assets/empty.png";
 import TodoImage from "../assets/todolist.png";
-import CelluloseImage from "../assets/cellulose.png";
+import CelluloseImage from "../assets/cellulose21.png";
 import LaBoutiqueFrancaiseImage from "../assets/laboutiquefrancaise.png"
+import NestImage from "../assets/nest.png";
+import PortfolioImage from "../assets/portfolio.png";
 import ProjectCard from "./ProjectCard.jsx";
 
 const projects = [
@@ -9,7 +10,7 @@ const projects = [
         title: "Nest",
         description: "Application web conçue pour la recherche et la réservation d'hébergements. Inspirée par les fonctionnalités de la plateformes AirBnB.",
         technologies: ["Angular", "Express", "NodeJs", "MongoDB", "Tailwind"],
-        imageUrl: EmptyImage,
+        imageUrl: NestImage,
         moreInfoLink: "#",
         repositoryLink: "https://github.com/enzo-viguier/Nest"
     },
@@ -41,7 +42,7 @@ const projects = [
         title: "Portfolio",
         description: "Site web personnel pour présenter mes compétences, mes projets et mon parcours professionnel.",
         technologies: ["React", "Tailwind"],
-        imageUrl: EmptyImage,
+        imageUrl: PortfolioImage,
         moreInfoLink: "#",
         repositoryLink: "https://github.com/enzo-viguier/portfolio"
     }
