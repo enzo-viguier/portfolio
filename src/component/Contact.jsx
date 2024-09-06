@@ -103,7 +103,7 @@ export default function Contact() {
                             {isSubmitted ? (
                                 <p className="text-green-600">Merci pour votre message, je vous répondrai bientôt.</p>
                             ) : (
-                                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md bg-slate-300">
+                                <form onSubmit={handleSubmit} className="bg-gray-300 p-8 rounded-lg shadow-md bg-slate-300">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                                         <div>
                                             <label htmlFor="firstName" className="block text-neutral-800">Prénom
