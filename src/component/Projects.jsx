@@ -1,60 +1,8 @@
 import EmptyImage from "../assets/empty.png";
 import TodoImage from "../assets/todolist.png";
 import CelluloseImage from "../assets/cellulose.png";
+import LaBoutiqueFrancaiseImage from "../assets/laboutiquefrancaise.png"
 import ProjectCard from "./ProjectCard.jsx";
-
-// const projects = [
-//     {
-//         title: "Online 'Guess Who?' game",
-//         description: "A web implementation of the famous 'Guess Who?' game, including both multiplayer mode and AI mode. Also includes different game boards, and a board creation tool.",
-//         technologies: ["JavaScript", "Express", "Socket.IO"],
-//         imageUrl: Image,
-//         moreInfoLink: "#",
-//         repositoryLink: "#"
-//     },
-//     {
-//         title: "Online 'Guess Who?' game",
-//         description: "A web implementation of the famous 'Guess Who?' game, including both multiplayer mode and AI mode. Also includes different game boards, and a board creation tool.",
-//         technologies: ["JavaScript", "Express", "Socket.IO"],
-//         imageUrl: Image,
-//         moreInfoLink: "#",
-//         repositoryLink: "#"
-//     },
-//     {
-//         title: "Online 'Guess Who?' game",
-//         description: "A web implementation of the famous 'Guess Who?' game, including both multiplayer mode and AI mode. Also includes different game boards, and a board creation tool.",
-//         technologies: ["JavaScript", "Express", "Socket.IO"],
-//         imageUrl: Image,
-//         moreInfoLink: "#",
-//         repositoryLink: "#"
-//     },
-//     {
-//         title: "Online 'Guess Who?' game",
-//         description: "A web implementation of the famous 'Guess Who?' game, including both multiplayer mode and AI mode. Also includes different game boards, and a board creation tool.",
-//         technologies: ["JavaScript", "Express", "Socket.IO"],
-//         imageUrl: Image,
-//         moreInfoLink: "#",
-//         repositoryLink: "#"
-//     },
-//     {
-//         title: "Online 'Guess Who?' game",
-//         description: "A web implementation of the famous 'Guess Who?' game, including both multiplayer mode and AI mode. Also includes different game boards, and a board creation tool.",
-//         technologies: ["JavaScript", "Express", "Socket.IO"],
-//         imageUrl: Image,
-//         moreInfoLink: "#",
-//         repositoryLink: "#"
-//     },
-//     {
-//         title: "Online 'Guess Who?' game",
-//         description: "A web implementation of the famous 'Guess Who?' game, including both multiplayer mode and AI mode. Also includes different game boards, and a board creation tool.",
-//         technologies: ["JavaScript", "Express", "Socket.IO"],
-//         imageUrl: Image,
-//         moreInfoLink: "#",
-//         repositoryLink: "#"
-//     },
-//
-//     // Ajoute d'autres projets ici
-// ];
 
 const projects = [
     {
@@ -77,7 +25,7 @@ const projects = [
         title: "La Boutique Française",
         description: "Site web de ecommerce pour une boutique de vêtements. Ce projet a été réalisé pour apprendre à utilisé le framework Symfony.",
         technologies: ["Symfony", "Bootstrap", "Stripe", "MailJet"],
-        imageUrl: EmptyImage,
+        imageUrl: LaBoutiqueFrancaiseImage,
         moreInfoLink: "#",
         repositoryLink: "https://github.com/enzo-viguier/laboutiquefrancaise"
     },
@@ -97,9 +45,6 @@ const projects = [
         moreInfoLink: "#",
         repositoryLink: "https://github.com/enzo-viguier/portfolio"
     }
-
-
-    // Ajoute d'autres projets ici
 ];
 
 export default function Projects() {
