@@ -1,5 +1,6 @@
 import './App.css'
 import Hero from "./component/Hero.jsx";
+import Wave from "./component/Wave.jsx";
 import CvBand from "./component/CVBand.jsx";
 import Projects from "./component/Projects.jsx";
 import Technologies from "./component/Technologies.jsx";
@@ -13,7 +14,9 @@ function App() {
             <Hero></Hero>
             <CvBand></CvBand>
             <Projects></Projects>
+            <Wave TopColor="#FFFFFF" BottomColor="#0F172A" />
             <Technologies></Technologies>
+            <Wave TopColor="#0F172A" BottomColor="#FFFFFF" />
             <Testimony></Testimony>
             <Contact></Contact>
         </>

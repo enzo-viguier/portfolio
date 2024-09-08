@@ -20,3 +20,25 @@
     background-position: 0 0, 32px  32px;
 
 }
+
+.wave-container {
+    height: 40vh;
+    position: relative;
+}
+
+.wave {
+    width: 100%;
+    height: 130px;
+    position: absolute;
+    bottom: -0.3%;
+    left: 0;
+    background-size: auto;
+    background-repeat: repeat no-repeat;
+    background-position: 20vw bottom;
+}
+
+@media(max-width:850px) {
+    .wave {
+        height: 65px;
+    }
+}

@@ -6,7 +6,8 @@ const technologies = {
         { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
         { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
         { name: "Angular", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" },
-        { name: "Tailwind", logo: "https://img.icons8.com/color/48/000000/tailwindcss.png" }
+        { name: "Tailwind", logo: "https://img.icons8.com/color/48/000000/tailwindcss.png" },
+        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
     ],
     "Backend": [
         { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
@@ -40,9 +41,9 @@ const technologies = {
 
 export default function Technologies() {
     return (
-        <div className="py-12 bg-gray-100">
+        <div className="py-12 bg-slate-900 pt-60">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center text-neutral-800 mb-8">Technologies</h2>
+                <h2 className="text-4xl font-bold text-center text-neutral-800 mb-8 text-white">Technologies</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {Object.keys(technologies).map((category, index) => (
                         <TechnologieCategory
