@@ -2,13 +2,14 @@ import TodoImage from "../assets/todolist.png";
 import CelluloseImage from "../assets/cellulose21.png";
 import LaBoutiqueFrancaiseImage from "../assets/laboutiquefrancaise.png"
 import NestImage from "../assets/nest.png";
+import DjManuEvents34Image from "../assets/djmanu.png";
 import PortfolioImage from "../assets/portfolio.png";
 import ProjectCard from "./ProjectCard.jsx";
 
 const projects = [
     {
         title: "Nest",
-        description: "Application web conçue pour la recherche et la réservation d'hébergements. Inspirée par les fonctionnalités de la plateformes AirBnB.",
+        description: "Application web conçue pour la recherche et la réservation d'hébergements. Inspirée par les fonctionnalités de la plateforme AirBnB.",
         technologies: ["Angular", "Express", "NodeJs", "MongoDB", "Tailwind"],
         imageUrl: NestImage,
         moreInfoLink: "#",
@@ -24,7 +25,7 @@ const projects = [
     },
     {
         title: "La Boutique Française",
-        description: "Site web de ecommerce pour une boutique de vêtements. Ce projet a été réalisé pour apprendre à utilisé le framework Symfony.",
+        description: "Site web de ecommerce pour une boutique de vêtements. Ce projet a été réalisé pour apprendre à utiliser le framework Symfony.",
         technologies: ["Symfony", "Bootstrap", "Stripe", "MailJet"],
         imageUrl: LaBoutiqueFrancaiseImage,
         moreInfoLink: "#",
@@ -37,6 +38,14 @@ const projects = [
         imageUrl: CelluloseImage,
         moreInfoLink: "#",
         repositoryLink: "https://github.com/enzo-viguier/Cellulose-21"
+    },
+    {
+        title: "DJ Manu Events 34",
+        description: "Création d'un site internet pour un DJ professionnel. Réalisé avec Wordpress pour faciliter la gestion du contenu par le client.",
+        technologies: ["Wordpress"],
+        imageUrl: DjManuEvents34Image,
+        moreInfoLink: "#",
+        repositoryLink: "https://djmanu-evenementiel.fr/"
     },
     {
         title: "Portfolio",

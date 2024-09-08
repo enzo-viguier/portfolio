@@ -14,9 +14,9 @@ function App() {
             <Hero></Hero>
             <CvBand></CvBand>
             <Projects></Projects>
-            <Wave TopColor="#FFFFFF" BottomColor="#0F172A" />
+            <Wave TopColor="##f3f4f6" BottomColor="#0F172A" />
             <Technologies></Technologies>
-            <Wave TopColor="#0F172A" BottomColor="#FFFFFF" />
+            <Wave TopColor="#0F172A" BottomColor="#f3f4f6" />
             <Testimony></Testimony>
             <Contact></Contact>
         </>
