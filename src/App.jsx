@@ -17,7 +17,7 @@ function App() {
             <Wave TopColor="#f3f4f6" BottomColor="#0F172A" />
             <Technologies></Technologies>
             <Wave TopColor="#0F172A" BottomColor="#f3f4f6" />
-            <Testimony></Testimony>
+            {/*<Testimony></Testimony>*/}
             <Contact></Contact>
         </>
     )
