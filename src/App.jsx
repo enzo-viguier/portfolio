@@ -6,6 +6,7 @@ import Projects from "./component/Projects.jsx";
 import Technologies from "./component/Technologies.jsx";
 import Testimony from "./component/Testimony.jsx";
 import Contact from "./component/Contact.jsx";
+import Experiences from "./component/Experiences.jsx";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <>
             <Hero></Hero>
             <CvBand></CvBand>
+            <Experiences></Experiences>
             <Projects></Projects>
             <Wave TopColor="#f3f4f6" BottomColor="#0F172A" />
             <Technologies></Technologies>
