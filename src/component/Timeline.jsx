@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import TimelineItem from './TimelineItem';
+import TimelineItem from './subcomponent/TimelineItem.jsx';
 
 const Timeline = ({ items, className }) => {
     return (

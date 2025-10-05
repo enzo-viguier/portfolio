@@ -4,7 +4,7 @@ import LaBoutiqueFrancaiseImage from "../assets/laboutiquefrancaise.png"
 import NestImage from "../assets/nest.png";
 import DjManuEvents34Image from "../assets/djmanu.png";
 import PortfolioImage from "../assets/portfolio.png";
-import ProjectCard from "./ProjectCard.jsx";
+import ProjectCard from "./subcomponent/ProjectCard.jsx";
 
 const projects = [
     {

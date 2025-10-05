@@ -1,4 +1,4 @@
-import TestimonyCard from "./TestimonyCard.jsx";
+import TestimonyCard from "./subcomponent/TestimonyCard.jsx";
 import UserPhoto from "../assets/user.jpg"
 import DjManuEventsLogo from "../assets/logo_djmanuevents.png"
 

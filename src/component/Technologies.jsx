@@ -1,4 +1,4 @@
-import TechnologieCategory from "./TechnologieCategory.jsx";
+import TechnologieCategory from "./subcomponent/TechnologieCategory.jsx";
 
 const technologies = {
     "Frontend": [
